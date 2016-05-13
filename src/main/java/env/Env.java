@@ -37,7 +37,7 @@ public class Env
 			case "firefox":
 				File pathToBinary = new File("C:\\Users\\e.abas.sqs\\MyData\\Installed\\PortableApps\\PortableApps\\FirefoxPortable\\App\\Firefox\\firefox.exe");
 				FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
-				FirefoxProfile firefoxProfile = new FirefoxProfile();       
+				FirefoxProfile firefoxProfile = new FirefoxProfile();
 				driver = new FirefoxDriver(ffBinary,firefoxProfile);				
 				//driver = new FirefoxDriver("C:\Users\e.abas.sqs\MyData\Installed\PortableApps\PortableApps\FirefoxPortable\Data");
 				break;

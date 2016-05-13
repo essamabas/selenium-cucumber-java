@@ -46,7 +46,38 @@ public class UserStepDefinitions implements BaseTest{
 	        	ScenariosList.put(ScenariosList.size()+1, scenario);
 	        }
 	    }
-	   
+
+// -------------------------
+// Tree-Elements
+// -------------------------	   
+	    /**
+	    * Expand Tree Element by clicking the image beside given Text 
+	    * @param	elementName		Tree Element Name to be searched for    
+	    */
+		@Then("^I expand Tree element contains text \"(.*?)\"$")
+		public void expand_tree_element(String elementName) throws Exception
+		{
+			String accessName = "//a[contains(text(),'" + elementName +"')]/../..//td/a/img";
+			String type = "xpath";
+			miscmethodObj.validateLocator(type);
+			progressObj.waitForElementToClick(type, accessName, "10");
+			clickObj.clickForcefully(type,accessName);
+		}
+		
+	    /**
+	    * Click on Tree Element 
+	    * @param	elementName		Tree Element Name to be searched for    
+	    */		
+		@Then("^I click Tree element contains text \"(.*?)\"$")
+		public void click_tree_element(String elementName) throws Exception
+		{
+			String accessName = "//a[contains(text(),'" + elementName +"')]";
+			String type = "xpath";
+			miscmethodObj.validateLocator(type);
+			progressObj.waitForElementToClick(type, accessName, "10");			
+			clickObj.clickForcefully(type,accessName);
+		}
+		
 // -------------------------
 // Navigation
 // -------------------------
@@ -135,6 +166,71 @@ public class UserStepDefinitions implements BaseTest{
 		}	
 
 	
+// -------------------------
+// Save Dialog
+// -------------------------		
+	    /**
+	    * Check that Authentication Dialog is present
+	    * @param	arg1	of the file to be modified    
+	    */		
+		@Then("^Save dialog with title \"(.*?)\" is present$")
+		public void save_dialog_with_title_is_present(String arg1) throws Throwable {
+		    // Write code here that turns the phrase above into concrete actions
+		    //throw new PendingException();
+			//ToDO
+		}		
+		
+	    /**
+	    * Save File when Save-File Dialog appeared
+	    * @param	path		path of the file
+	    * @Todo		Pass Parameters to AutoIt Script 
+	    */
+		@Then("^I save file under \"(.*?)\"$")
+		public void i_save_file_under(String path) {
+		    // Write code here that turns the phrase above into concrete actions
+			String FilePath = "resources/AutoIt/FireFox_SaveAsDialog.exe";
+			File MyAutoIt = new File(FilePath);
+			try {
+				String[] options = new String[]{path};
+				//Runtime.getRuntime().exec(MyAutoIt.getAbsolutePath(), options);
+				Process p = Runtime.getRuntime().exec("cmd /c start /wait " + MyAutoIt.getAbsolutePath());
+				System.out.println("Waiting for AutoIT SaveDialog Script ...");
+				p.waitFor();
+				System.out.println("AutoIt SaveDialog Script done.");						
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	    /**
+	    * Save File when Save-File Dialog appeared
+	    * @param	path		path of the file
+	    * @Todo		Pass Parameters to AutoIt Script 
+	    */
+		@Then("^I save file to workspace$")
+		public void i_save_file() {
+		    // Write code here that turns the phrase above into concrete actions
+			String FilePath = "resources/AutoIt/FireFox_SaveDialog.exe";
+			File MyAutoIt = new File(FilePath);
+			try {
+				Process p = Runtime.getRuntime().exec("cmd /c start /wait " + MyAutoIt.getAbsolutePath());
+				System.out.println("Waiting for AutoIT SaveDialog Script ...");
+				p.waitFor();
+				System.out.println("AutoIt SaveDialog Script done.");						
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}		
+		
+		
 		@Given("^dummy$")
 		public void dummy() throws Throwable {
 		    // Write code here that turns the phrase above into concrete actions
