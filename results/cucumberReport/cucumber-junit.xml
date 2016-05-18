@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="9" time="82.916196">
+<testcase classname="CalDB extract certain Software Calibration Data" name="I Navigate to CalDB" time="22.104145">
+<system-out><![CDATA[Given I navigate to Url "http://caldb.getrag.com/CalDB/faces/application.jsp".passed
+]]></system-out>
+</testcase>
+<testcase classname="CalDB extract certain Software Calibration Data" name="I Enter CalDB Authentication-Credentials" time="13.606334">
+<system-out><![CDATA[Given Authenication dialog with title "Authentication Required" is present..passed
+When I Enter Authenication Credentials "username","password"................passed
+Then Authentication dialog is dismissed.....................................passed
+And I wait for 5 sec........................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="CalDB extract certain Software Calibration Data" name="I dismiss different Browser than IE Alert" time="0.113077">
+<system-out><![CDATA[Given I should see alert text contains "This application has been developed and tested for Internet Explorer".passed
+Then I dismiss alert........................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="CalDB extract certain Software Calibration Data" name="I Navigate to a certain Software-Version" time="0.801496">
+<system-out><![CDATA[Given Scenerio "I Navigate to CalDB" is passed..............................passed
+Then I switch to window having title "CalDB"................................passed
+And I switch to main content................................................passed
+And I switch to frame "main"................................................passed
+And I switch to frame "treeframe"...........................................passed
+And I wait 10 seconds for element having xpath "//a[contains(text(),'xDCT150/300/500')]/../../td/a/img" to be enabled.passed
+And I forcefully click on element having xpath "//a[contains(text(),'xDCT150/300/500')]/../../td/a/img".passed
+And I forcefully click on element having xpath "//a[contains(text(),'BM')]/../..//td/a/img".passed
+And I forcefully click on element having xpath "//a[contains(text(),'BN2020')]/../..//td/a/img".passed
+And I forcefully click on element having xpath "//a[contains(text(),'300BM_AA310X0_PD_BB2')]/../..//td/a/img".passed
+And I forcefully click on element having xpath "//a[contains(text(),'V1 005B')]/../..//td/a/img".passed
+And I forcefully click on element having xpath "//a[contains(text(),'V1.1 _01')]".passed
+]]></system-out>
+</testcase>
+<testcase classname="CalDB extract certain Software Calibration Data" name="I Export a certain Software Calibration Data" time="14.009751">
+<system-out><![CDATA[Given Scenerio "I Navigate to a certain Software-Version" is passed.........passed
+When I switch to main content...............................................passed
+Then I switch to frame "main"...............................................passed
+And I switch to frame "contentframe"........................................passed
+And I wait 10 seconds for element having xpath "//input[contains(@title, 'Export as CSV file')]" to display.passed
+And I forcefully click on element having xpath "//input[contains(@title, 'Export as CSV file')]".passed
+And I wait for 10 sec.......................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="CalDB extract certain Software Calibration Data" name="I Navigate to a certain Software A2l-File Download Area" time="10.344207">
+<system-out><![CDATA[Given Scenerio "I Navigate to a certain Software-Version" is passed.........passed
+When I switch to main content...............................................passed
+Then I switch to frame "main"...............................................passed
+And I switch to frame "contentframe"........................................passed
+And I wait 10 seconds for element having xpath "//input[contains(@title, 'Download hex- and a2l-file')]" to display.passed
+And I forcefully click on element having xpath "//input[contains(@title, 'Download hex- and a2l-file')]".passed
+And I wait for 10 sec.......................................................passed
+And I wait 20 seconds for element having xpath "//input[@id='form1FrmCalDownload:bnA2lDwnldFrmCD']" to display.passed
+And I wait 20 seconds for element having xpath "//input[contains(@title, 'Download a2l file')]" to be enabled.passed
+And I forcefully click on element having xpath "//input[contains(@title, 'Download a2l file')]".passed
+]]></system-out>
+</testcase>
+<testcase classname="CalDB extract certain Software Calibration Data" name="I accept Not released for public roads Alert" time="0.11357">
+<system-out><![CDATA[Given Scenerio "I Navigate to a certain Software A2l-File Download Area" is passed.passed
+When I should see alert text contains "Not released for public roads!"......passed
+Then I accept alert.........................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="CalDB extract certain Software Calibration Data" name="Save CalDB A2l File" time="15.669622">
+<system-out><![CDATA[Given Scenerio "I Navigate to a certain Software A2l-File Download Area" is passed.passed
+When Save dialog with title "Enter name of file to save to�" is present.....passed
+Then I save file under "c:/tools/variant.a2l"...............................passed
+And I wait for 5 sec........................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="CalDB extract certain Software Calibration Data" name="I close CalDB" time="6.153994">
+<system-out><![CDATA[Given I wait for 5 sec......................................................passed
+Then I close browser........................................................passed
+]]></system-out>
+</testcase>
+</testsuite>

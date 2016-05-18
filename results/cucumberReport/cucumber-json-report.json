@@ -1,0 +1,65 @@
+Feature: CalDB extract certain Software Calibration Data
+        As a user I should able to login into CalDB and extract certain Software Calibration Data.
+
+  Scenario: I Navigate to CalDB                                                   [90m# features/caldb/caldb.GetSoftwareA2l.feature:4[0m
+    [32mGiven [0m[32mI navigate to Url "[0m[32m[1mhttp://caldb.getrag.com/CalDB/faces/application.jsp[0m[32m"[0m [90m# UserStepDefinitions.navigate_to_url(String)[0m
+
+  Scenario: I Enter CalDB Authentication-Credentials                           [90m# features/caldb/caldb.GetSoftwareA2l.feature:7[0m
+    [32mGiven [0m[32mAuthenication dialog with title "[0m[32m[1mAuthentication Required[0m[32m" is present[0m [90m# UserStepDefinitions.authenication_dialog_with_title_is_present(String)[0m
+    [32mWhen [0m[32mI Enter Authenication Credentials "[0m[32m[1musername[0m[32m","[0m[32m[1mpassword[0m[32m"[0m               [90m# UserStepDefinitions.i_Enter_Authenication_Credentials(String,String)[0m
+    [32mThen [0m[32mAuthentication dialog is dismissed[0m                                    [90m# UserStepDefinitions.authentication_dialog_is_dismissed()[0m
+    [32mAnd [0m[32mI wait for [0m[32m[1m5[0m[32m sec[0m                                                       [90m# PredefinedStepDefinitions.wait(String)[0m
+
+  Scenario: I dismiss different Browser than IE Alert                                                             [90m# features/caldb/caldb.GetSoftwareA2l.feature:13[0m
+    [32mGiven [0m[32mI should see alert text contains "[0m[32m[1mThis application has been developed and tested for Internet Explorer[0m[32m"[0m [90m# UserStepDefinitions.check_alert_text(String)[0m
+    [32mThen [0m[32mI dismiss alert[0m                                                                                          [90m# PredefinedStepDefinitions.dismiss_alert()[0m
+
+  Scenario: I Navigate to a certain Software-Version                                                                      [90m# features/caldb/caldb.GetSoftwareA2l.feature:17[0m
+    [32mGiven [0m[32mScenerio "[0m[32m[1mI Navigate to CalDB[0m[32m" is passed[0m                                                                        [90m# UserStepDefinitions.scenario_is_passed(String)[0m
+    [32mThen [0m[32mI switch to window having title "[0m[32m[1mCalDB[0m[32m"[0m                                                                          [90m# PredefinedStepDefinitions.switch_to_window_by_title(String)[0m
+    [32mAnd [0m[32mI switch to main content[0m                                                                                          [90m# PredefinedStepDefinitions.switch_to_default_content()[0m
+    [32mAnd [0m[32mI switch to frame "[0m[32m[1mmain[0m[32m"[0m                                                                                          [90m# UserStepDefinitions.i_switch_to_frame(String)[0m
+    [32mAnd [0m[32mI switch to frame "[0m[32m[1mtreeframe[0m[32m"[0m                                                                                     [90m# UserStepDefinitions.i_switch_to_frame(String)[0m
+    [32mAnd [0m[32mI wait [0m[32m[1m10[0m[32m seconds for element having [0m[32m[1mxpath[0m[32m "[0m[32m[1m//a[contains(text(),'xDCT150/300/500')]/../../td/a/img[0m[32m" to be enabled[0m [90m# PredefinedStepDefinitions.wait_for_ele_to_click(String,String,String)[0m
+    [32mAnd [0m[32mI forcefully click on element having [0m[32m[1mxpath[0m[32m "[0m[32m[1m//a[contains(text(),'xDCT150/300/500')]/../../td/a/img[0m[32m"[0m               [90m# PredefinedStepDefinitions.click_forcefully(String,String)[0m
+    [32mAnd [0m[32mI forcefully click on element having [0m[32m[1mxpath[0m[32m "[0m[32m[1m//a[contains(text(),'BM')]/../..//td/a/img[0m[32m"[0m                           [90m# PredefinedStepDefinitions.click_forcefully(String,String)[0m
+    [32mAnd [0m[32mI forcefully click on element having [0m[32m[1mxpath[0m[32m "[0m[32m[1m//a[contains(text(),'BN2020')]/../..//td/a/img[0m[32m"[0m                       [90m# PredefinedStepDefinitions.click_forcefully(String,String)[0m
+    [32mAnd [0m[32mI forcefully click on element having [0m[32m[1mxpath[0m[32m "[0m[32m[1m//a[contains(text(),'300BM_AA310X0_PD_BB2')]/../..//td/a/img[0m[32m"[0m         [90m# PredefinedStepDefinitions.click_forcefully(String,String)[0m
+    [32mAnd [0m[32mI forcefully click on element having [0m[32m[1mxpath[0m[32m "[0m[32m[1m//a[contains(text(),'V1 005B')]/../..//td/a/img[0m[32m"[0m                      [90m# PredefinedStepDefinitions.click_forcefully(String,String)[0m
+    [32mAnd [0m[32mI forcefully click on element having [0m[32m[1mxpath[0m[32m "[0m[32m[1m//a[contains(text(),'V1.1 _01')][0m[32m"[0m                                     [90m# PredefinedStepDefinitions.click_forcefully(String,String)[0m
+
+  Scenario: I Export a certain Software Calibration Data                                                        [90m# features/caldb/caldb.GetSoftwareA2l.feature:31[0m
+    [32mGiven [0m[32mScenerio "[0m[32m[1mI Navigate to a certain Software-Version[0m[32m" is passed[0m                                         [90m# UserStepDefinitions.scenario_is_passed(String)[0m
+    [32mWhen [0m[32mI switch to main content[0m                                                                               [90m# PredefinedStepDefinitions.switch_to_default_content()[0m
+    [32mThen [0m[32mI switch to frame "[0m[32m[1mmain[0m[32m"[0m                                                                               [90m# UserStepDefinitions.i_switch_to_frame(String)[0m
+    [32mAnd [0m[32mI switch to frame "[0m[32m[1mcontentframe[0m[32m"[0m                                                                        [90m# UserStepDefinitions.i_switch_to_frame(String)[0m
+    [32mAnd [0m[32mI wait [0m[32m[1m10[0m[32m seconds for element having [0m[32m[1mxpath[0m[32m "[0m[32m[1m//input[contains(@title, 'Export as CSV file')][0m[32m" to display[0m [90m# PredefinedStepDefinitions.wait_for_ele_to_display(String,String,String)[0m
+    [32mAnd [0m[32mI forcefully click on element having [0m[32m[1mxpath[0m[32m "[0m[32m[1m//input[contains(@title, 'Export as CSV file')][0m[32m"[0m            [90m# PredefinedStepDefinitions.click_forcefully(String,String)[0m
+    [32mAnd [0m[32mI wait for [0m[32m[1m10[0m[32m sec[0m                                                                                       [90m# PredefinedStepDefinitions.wait(String)[0m
+
+  Scenario: I Navigate to a certain Software A2l-File Download Area                                                     [90m# features/caldb/caldb.GetSoftwareA2l.feature:40[0m
+    [32mGiven [0m[32mScenerio "[0m[32m[1mI Navigate to a certain Software-Version[0m[32m" is passed[0m                                                 [90m# UserStepDefinitions.scenario_is_passed(String)[0m
+    [32mWhen [0m[32mI switch to main content[0m                                                                                       [90m# PredefinedStepDefinitions.switch_to_default_content()[0m
+    [32mThen [0m[32mI switch to frame "[0m[32m[1mmain[0m[32m"[0m                                                                                       [90m# UserStepDefinitions.i_switch_to_frame(String)[0m
+    [32mAnd [0m[32mI switch to frame "[0m[32m[1mcontentframe[0m[32m"[0m                                                                                [90m# UserStepDefinitions.i_switch_to_frame(String)[0m
+    [32mAnd [0m[32mI wait [0m[32m[1m10[0m[32m seconds for element having [0m[32m[1mxpath[0m[32m "[0m[32m[1m//input[contains(@title, 'Download hex- and a2l-file')][0m[32m" to display[0m [90m# PredefinedStepDefinitions.wait_for_ele_to_display(String,String,String)[0m
+    [32mAnd [0m[32mI forcefully click on element having [0m[32m[1mxpath[0m[32m "[0m[32m[1m//input[contains(@title, 'Download hex- and a2l-file')][0m[32m"[0m            [90m# PredefinedStepDefinitions.click_forcefully(String,String)[0m
+    [32mAnd [0m[32mI wait for [0m[32m[1m10[0m[32m sec[0m                                                                                               [90m# PredefinedStepDefinitions.wait(String)[0m
+    [32mAnd [0m[32mI wait [0m[32m[1m20[0m[32m seconds for element having [0m[32m[1mxpath[0m[32m "[0m[32m[1m//input[@id='form1FrmCalDownload:bnA2lDwnldFrmCD'][0m[32m" to display[0m      [90m# PredefinedStepDefinitions.wait_for_ele_to_display(String,String,String)[0m
+    [32mAnd [0m[32mI wait [0m[32m[1m20[0m[32m seconds for element having [0m[32m[1mxpath[0m[32m "[0m[32m[1m//input[contains(@title, 'Download a2l file')][0m[32m" to be enabled[0m       [90m# PredefinedStepDefinitions.wait_for_ele_to_click(String,String,String)[0m
+    [32mAnd [0m[32mI forcefully click on element having [0m[32m[1mxpath[0m[32m "[0m[32m[1m//input[contains(@title, 'Download a2l file')][0m[32m"[0m                     [90m# PredefinedStepDefinitions.click_forcefully(String,String)[0m
+
+  Scenario: I accept Not released for public roads Alert                               [90m# features/caldb/caldb.GetSoftwareA2l.feature:52[0m
+    [32mGiven [0m[32mScenerio "[0m[32m[1mI Navigate to a certain Software A2l-File Download Area[0m[32m" is passed[0m [90m# UserStepDefinitions.scenario_is_passed(String)[0m
+    [32mWhen [0m[32mI should see alert text contains "[0m[32m[1mNot released for public roads![0m[32m"[0m             [90m# UserStepDefinitions.check_alert_text(String)[0m
+    [32mThen [0m[32mI accept alert[0m                                                                [90m# PredefinedStepDefinitions.handle_alert()[0m
+
+  Scenario: Save CalDB A2l File                                                        [90m# features/caldb/caldb.GetSoftwareA2l.feature:57[0m
+    [32mGiven [0m[32mScenerio "[0m[32m[1mI Navigate to a certain Software A2l-File Download Area[0m[32m" is passed[0m [90m# UserStepDefinitions.scenario_is_passed(String)[0m
+    [32mWhen [0m[32mSave dialog with title "[0m[32m[1mEnter name of file to save to�[0m[32m" is present[0m            [90m# UserStepDefinitions.save_dialog_with_title_is_present(String)[0m
+    [32mThen [0m[32mI save file under "[0m[32m[1mc:/tools/variant.a2l[0m[32m"[0m                                      [90m# UserStepDefinitions.i_save_file_under(String)[0m
+    [32mAnd [0m[32mI wait for [0m[32m[1m5[0m[32m sec[0m                                                               [90m# PredefinedStepDefinitions.wait(String)[0m
+
+  Scenario: I close CalDB  [90m# features/caldb/caldb.GetSoftwareA2l.feature:63[0m
+    [32mGiven [0m[32mI wait for [0m[32m[1m5[0m[32m sec[0m [90m# PredefinedStepDefinitions.wait(String)[0m
+    [32mThen [0m[32mI close browser[0m   [90m# PredefinedStepDefinitions.close_browser()[0m
