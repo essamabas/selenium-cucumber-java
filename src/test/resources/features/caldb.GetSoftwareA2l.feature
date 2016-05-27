@@ -54,12 +54,13 @@ Scenario: I Navigate to a certain Software A2l-File Download Area
         When I should see alert text contains "Not released for public roads!"
         Then I accept alert
 
- Scenario: Save CalDB A2l File
+
+ Scenario: CalDB A2l File Save As Dialog
  		Given Scenerio "I Navigate to a certain Software A2l-File Download Area" is passed        
         When Save dialog with title "Enter name of file to save to…" is present
         Then I save file under "c:/tools/variant.a2l"
         And I wait for 5 sec
-                		        
+                        		        
 Scenario: I close CalDB
         Given I wait for 5 sec
         Then I close browser

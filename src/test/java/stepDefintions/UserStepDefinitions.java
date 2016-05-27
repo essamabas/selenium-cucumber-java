@@ -1,10 +1,13 @@
 package stepDefintions;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -26,6 +29,7 @@ public class UserStepDefinitions implements BaseTest{
 
 	  	// private Scenarios - List
 	  	private static HashMap<Integer,Object> ScenariosList = new HashMap<Integer, Object>();
+		private String workspaceDir = "C:\\Users\\e.abas.sqs\\Downloads\\";
 	
 	  
 	    /**
@@ -113,6 +117,22 @@ public class UserStepDefinitions implements BaseTest{
 				assertionObj.checkAlertText(assertionObj.getAlertText());
 			}
 		}
+		
+	    /**
+	    * Check that pop-up Alert contains subtext
+	    * @param	subtext		subtext to be compared to    
+	    */		
+		@Then("^I may see error alert text contains \"(.*?)\"$") 
+		public void dismiss_alert_text(String subtext) throws TestCaseFailed
+		{
+			try{
+				driver.switchTo().alert().dismiss();
+			 } catch (NoAlertPresentException ex) {
+				 // Alert not present
+				 ex.printStackTrace();
+			}
+		}
+		
 
 // -------------------------
 // Authentication Dialog
@@ -220,6 +240,12 @@ public class UserStepDefinitions implements BaseTest{
 				Process p = Runtime.getRuntime().exec("cmd /c start /wait " + MyAutoIt.getAbsolutePath());
 				System.out.println("Waiting for AutoIT SaveDialog Script ...");
 				p.waitFor();
+		        BufferedReader in = new BufferedReader(
+		                new InputStreamReader(p.getInputStream()));
+				String line = null;
+				while ((line = in.readLine()) != null) {
+					System.out.println(line);
+				}				
 				System.out.println("AutoIt SaveDialog Script done.");						
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -297,6 +323,22 @@ public class UserStepDefinitions implements BaseTest{
 		public void i_switch_to_frame(String arg1) throws Throwable {
 		    // Write code here that turns the phrase above into concrete actions
 			driver.switchTo().frame(arg1);
+		}
+		
+		
+// -------------------------
+// Batches
+// -------------------------		
+		@Then("^I rename file in workspace \"(.*?)\" to \"(.*?)\"$")
+		public void i_rename_file_in_workspace_to(String arg1, String arg2) throws Throwable {
+		    // Write code here that turns the phrase above into concrete actions
+			Process p = Runtime.getRuntime().exec("cmd /c ren " + workspaceDir + arg1 + " " + arg2);
+	        BufferedReader in = new BufferedReader(
+	                new InputStreamReader(p.getInputStream()));
+			String line = null;
+			while ((line = in.readLine()) != null) {
+				System.out.println(line);
+			}			
 		}
 
 }

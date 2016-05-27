@@ -6,10 +6,13 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 
@@ -35,7 +38,7 @@ public class Env
 			switch (browser.toLowerCase()) {
 			case "ff":
 			case "firefox":
-				File pathToBinary = new File("C:\\Users\\e.abas.sqs\\MyData\\Installed\\PortableApps\\PortableApps\\FirefoxPortable\\App\\Firefox\\firefox.exe");
+				File pathToBinary = new File("C:\\Users\\e.abas.sqs\\MyData\\Installed\\PortableApps\\PortableApps\\FirefoxPortable\\FirefoxPortable.exe");
 				FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
 				FirefoxProfile firefoxProfile = new FirefoxProfile();
 				driver = new FirefoxDriver(ffBinary,firefoxProfile);				
@@ -45,16 +48,19 @@ public class Env
 			case "ch":
 			case "chrome":
 				  // Set Chrome in PATH
-				 file = new File("./src/main/resources/selenium_standalone/windows/32bit/chromedriver.exe");
+				 file = new File("resources/selenium_standalone/windows/googlechrome/32bit/chromedriver.exe");
 				 System.setProperty("webdriver.chrome.driver", 
 						 file.getAbsolutePath());
-				driver = new ChromeDriver();
+				 File pathToBinary1 = new File("C:\\Users\\e.abas.sqs\\MyData\\Installed\\PortableApps\\PortableApps\\GoogleChromePortable\\App\\Chrome-bin\\chrome.exe");				 
+				 ChromeOptions chromeOptions = new ChromeOptions();
+				 chromeOptions.setBinary(pathToBinary1);
+				 driver = new ChromeDriver(chromeOptions);
 				break;
 
 			case "ie" :
 			case "internetexplorer":
 				  // Set IE in PATH
-				 file = new File("src/main/resources/selenium_standalone/windows/internetexplorer/32bit/IEDriverServer.exe");
+				 file = new File("resources/selenium_standalone/windows/internetexplorer/32bit/IEDriverServer.exe");
 				 System.setProperty("webdriver.ie.driver", 
 						 file.getAbsolutePath());				
 				driver = new InternetExplorerDriver();
@@ -63,6 +69,18 @@ public class Env
 			case "safari":
 				driver = new SafariDriver();
 				break;
+				
+			case "phantomjs":
+				  // Set IE in PATH
+				 file = new File("resources/selenium_standalone/windows/phantomjs/32bit/phantomjs.exe");
+				 System.setProperty("phantomjs.binary.path", 
+						 file.getAbsolutePath());
+				 driver = new PhantomJSDriver();
+				break;
+				
+			case "htmlunit":
+				driver = new HtmlUnitDriver();
+				break;				
 				
 			 default:
 				 System.out.println("Invalid browser name "+browser);

@@ -34,6 +34,7 @@ Scenario: I Navigate to a certain Software-Version
         #Enter Calibration Name
         And I click Tree element contains text "V1.1 _01"
 
+
 Scenario: I Export a certain Software Calibration Data
 		Given Scenerio "I Navigate to a certain Software-Version" is passed
 		When I switch to main content
@@ -48,8 +49,9 @@ Scenario: I Export a certain Software Calibration Data
  		#@ToDo: Extend Save Dialog with RegExTitle - AuToIT
         When Save dialog with title "(?i).*?Opening.*(..)" is present
         Then I save file to workspace
+        And I may see error alert text contains "Es trat ein Fehler bei der Datenbetragung auf."
         And I wait for 5 sec
-        		
+                		
 Scenario: I Navigate to a certain Software A2l-File Download Area
 		Given Scenerio "I Navigate to a certain Software-Version" is passed
 		When I switch to main content
@@ -67,12 +69,20 @@ Scenario: I Navigate to a certain Software A2l-File Download Area
         When I should see alert text contains "Not released for public roads!"
         Then I accept alert
 
- Scenario: CalDB A2l File Save As Dialog
- 		Given Scenerio "I Navigate to a certain Software A2l-File Download Area" is passed        
-        When Save dialog with title "Enter name of file to save to…" is present
-        Then I save file under "c:/tools/variant.a2l"
+ Scenario: CalDB A2l File Save Dialog
+ 		Given Scenerio "I Navigate to a certain Software A2l-File Download Area" is passed
+ 		#@ToDo: Extend Save Dialog with RegExTitle - AuToIT
+        When Save dialog with title "(?i).*?Opening.*(..)" is present
+        Then I save file to workspace
         And I wait for 5 sec
-                		        
+
+ Scenario: Extract downloaded files from Workspace
+ 		Given Scenerio "CalDB A2l File Save Dialog" is passed
+ 		And Scenerio "CalDB CSV File Save Dialog" is passed
+        Then I rename file in workspace "*.a2l" to "variant.a2l"
+        And I rename file in workspace "*.csv" to "CalDB_Export.csv"
+        And I wait for 5 sec
+                        		        
 Scenario: I close CalDB
         Given I wait for 5 sec
         Then I close browser
