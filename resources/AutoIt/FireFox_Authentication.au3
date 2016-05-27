@@ -3,15 +3,14 @@ $cmd = UBound($CmdLine) - 1
 ConsoleWrite('> = Blue' & @CRLF) ; > = blue text color
 
 If $CmdLine[0] = 0 Then
-   WinWait("Enter name of file to save to…","",10)
-   If WinExists("Enter name of file to save to…") Then
-	  MsgBox (0,"Info","Dialog is found")
-	  WinActivate("Enter name of file to save to…")
-	  Send("C:\Users\e.abas.sqs\MyData\variant.a2l{TAB}{TAB}{ENTER}")
+   WinWait("Authentication Required","",10)
+   If WinExists("Authentication Required") Then
+	  WinActivate("Authentication Required")
+	  Send("essam.abas{TAB}{SHIFTDOWN}Q{SHIFTUP}egabbe121{TAB}{ENTER}")
    EndIf
 Else
    ReadCmdLineParams()
-EndIf
+ EndIf
 
 Func ReadCmdLineParams()
     For $i = 1 To $cmd

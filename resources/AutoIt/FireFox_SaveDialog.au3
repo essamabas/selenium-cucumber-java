@@ -3,11 +3,12 @@ $cmd = UBound($CmdLine) - 1
 ConsoleWrite('> = Blue' & @CRLF) ; > = blue text color
 
 If $CmdLine[0] = 0 Then
-   WinWait("Enter name of file to save to…","",10)
-   If WinExists("Enter name of file to save to…") Then
-	  MsgBox (0,"Info","Dialog is found")
-	  WinActivate("Enter name of file to save to…")
-	  Send("C:\Users\e.abas.sqs\MyData\variant.a2l{TAB}{TAB}{ENTER}")
+   WinWait("[REGEXPTITLE:(?i).*?Opening.*?]","",10)
+   If WinExists("[REGEXPTITLE:(?i).*?Opening.*?]") Then
+	  WinActivate("[REGEXPTITLE:(?i).*?Opening.*?]")
+	  Send("{DOWN}")
+	  Sleep(5000)
+	  Send("{ENTER}")
    EndIf
 Else
    ReadCmdLineParams()
