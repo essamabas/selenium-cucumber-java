@@ -6,7 +6,7 @@ If $CmdLine[0] = 0 Then
    WinWait("Authentication Required","",10)
    If WinExists("Authentication Required") Then
 	  WinActivate("Authentication Required")
-	  Send("essam.abas{TAB}{SHIFTDOWN}Q{SHIFTUP}egabbe121{TAB}{ENTER}")
+	  Send("pass{TAB}{SHIFTDOWN}W{SHIFTUP}ord{TAB}{ENTER}")
    EndIf
 Else
    ReadCmdLineParams()
