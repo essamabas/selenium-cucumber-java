@@ -3,11 +3,11 @@ $cmd = UBound($CmdLine) - 1
 ConsoleWrite('> = Blue' & @CRLF) ; > = blue text color
 
 If $CmdLine[0] = 0 Then
-   WinWait("Enter name of file to save to…","",10)
-   If WinExists("Enter name of file to save to…") Then
+   WinWait("Enter name of file to save toâ€¦","",10)
+   If WinExists("Enter name of file to save toâ€¦") Then
 	  MsgBox (0,"Info","Dialog is found")
-	  WinActivate("Enter name of file to save to…")
-	  Send("C:\Users\e.abas.sqs\MyData\variant.a2l{TAB}{TAB}{ENTER}")
+	  WinActivate("Enter name of file to save toâ€¦")
+	  Send("C:\Users\MyData\variant.a2l{TAB}{TAB}{ENTER}")
    EndIf
 Else
    ReadCmdLineParams()
